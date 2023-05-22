@@ -10,6 +10,7 @@ function MovieList(props) {
       <img src={imgSource} alt={altText} />
       <h3>{props.title}</h3>
       <p>{props.synopsis}</p>
+      <p>{props.releaseDate}</p>
       <form onSubmit={(e) => handleSubmit(e)}>
         <button
           type="submit"

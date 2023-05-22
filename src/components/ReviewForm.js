@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue , push} from "firebase/database";
 import firebase from "../firebase";
 
 function ReviewForm(props) {
@@ -15,7 +15,7 @@ function ReviewForm(props) {
       // here we use Firebase's .val() method to parse our database info the way we want it
       console.log(response.val());
     });
-  });
+  }, []);
 
   const handleReviewerChange = (e) => {
     console.log(e.target.value);
@@ -32,8 +32,81 @@ function ReviewForm(props) {
     setReview(e.target.value);
   }
 
+  const handleReviewSubmit = (e) => {
+    e.preventDefault(); 
+    const currentDate = new Date();
+    console.log(currentDate);
+    const monthNumber = currentDate.getMonth();
+    let month
+    // eslint-disable-next-line default-case
+    switch (monthNumber) {
+      case 0:
+        month = "January";
+        break;
+      case 1:
+        month = "February"
+        break;
+      case 2:
+        month = "March"
+        break;
+      case 3:
+        month = "April"
+        break;
+      case 4:
+        month = "May"
+        break;
+      case 5:
+        month = "June"
+        break;
+      case 6:
+        month = "July"
+        break;
+      case 7:
+        month = "August"
+        break;
+      case 8:
+        month = "September"
+        break;
+      case 9:
+        month = "October"
+        break;
+      case 10:
+        month = "November"
+        break;
+      case 11:
+        month = "December"
+        break;
+    }
+    const day = currentDate.getDate();
+    const year = currentDate.getFullYear();
+    console.log(`Review submitted on ${currentDate} or ${month} ${day}, ${year}` );
+    const database = getDatabase(firebase);
+    const dbRef = ref(database);
+    
+    let reviewObject = {
+      movieName: props.movie,
+      reviewer: reviewerName,
+      rating: rating,
+      review: review,
+      date: Date(),
+      displayDate: `${month} ${day}, ${year}`
+    }
+
+    console.log(reviewObject);
+
+    // push the value of the `userInput` state to the database
+    push(dbRef, reviewObject);
+    
+    // reset the state to an empty string
+    reviewObject = {};
+    setReviewerName("");
+    setRating("");
+    setReview("");
+
+    props.clear();
+  }
   return (
-    <form>
+    <form onSubmit={handleReviewSubmit}>
       <h4>You are reviewing {props.movie}</h4>
       <label>Reviewer Name</label>
       <input 

@@ -22,6 +22,10 @@ export default function App() {
     setMovieList([]);
   };
 
+  const clearReviewForm = () => {
+    setMovieToReview("");
+  }
+
   useEffect(() => {
     axios({
       url: "https://api.themoviedb.org/3/search/movie",
@@ -49,6 +53,7 @@ export default function App() {
             title={movie.title}
             poster={movie.poster_path}
             synopsis={movie.overview}
+            releaseDate ={movie.release_date}
             getReviewForm={getReviewForm}
           />
         );
@@ -56,7 +61,7 @@ export default function App() {
       {movieToReview === "" ? (
         console.log("no movie")
       ) : (
-        <ReviewForm movie={movieToReview} />
+        <ReviewForm movie={movieToReview} clear={clearReviewForm}/>
       )}
     </div>
   );
