@@ -1,6 +1,14 @@
+import no_image from "../assets/no_image.png"
+
 function MovieList(props) {
   const altText = props.title;
-  const imgSource = `https://image.tmdb.org/t/p/w300/${props.poster}`;
+  let imgSource; 
+  if (props.poster) {
+    imgSource = `https://image.tmdb.org/t/p/w300/${props.poster}`;
+  } else {
+    console.log("No image found");
+    imgSource = no_image;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();

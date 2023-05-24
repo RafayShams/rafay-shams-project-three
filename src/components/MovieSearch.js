@@ -7,8 +7,13 @@ function MovieSearch(props) {
     setMovieInput(event.target.value);
   };
 
+  const handleSubmit = (e) => {
+    props.getMovies(e, movieInput);
+    setMovieInput("");
+  };
+  
   return (
-    <form onSubmit={(e) => props.getMovies(e, movieInput)}>
+    <form onSubmit={handleSubmit}>
       <label>Please enter a movie name to search movies to review</label>
       <input
         type="text"

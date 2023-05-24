@@ -47,9 +47,12 @@ export default function App() {
       <h1>Movie Reviewer</h1>
       <h2>All your movie reviews in one place!</h2>
       <MovieSearch getMovies={getMovies} />
-      {movieList.map((movie) => {
+      
+      <ul>
+        {movieList.map((movie) => {
         return (
           <MovieList
+            key={movie.id}
             title={movie.title}
             poster={movie.poster_path}
             synopsis={movie.overview}
@@ -58,6 +61,8 @@ export default function App() {
           />
         );
       })}
+      </ul>
+   
       {movieToReview === "" ? (
         console.log("no movie")
       ) : (
