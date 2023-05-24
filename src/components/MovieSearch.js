@@ -4,6 +4,7 @@ function MovieSearch(props) {
   const [movieInput, setMovieInput] = useState("");
 
   const handleMovieChange = (event) => {
+    console.log(event.target.value);
     setMovieInput(event.target.value);
   };
 

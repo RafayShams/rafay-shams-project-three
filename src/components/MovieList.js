@@ -23,10 +23,13 @@ function MovieList(props) {
         <button
           type="submit"
           onClick={(e) => props.getReviewForm(e, props.title)}
-        >
-          Review this movie
+        >Review this movie
         </button>
-        <button type="submit">See other reviews</button>
+        <button 
+          type="submit"
+          onClick={(e) => props.getReviews(e, props.title)}
+        >See other reviews
+        </button>
       </form>
     </div>
   );
