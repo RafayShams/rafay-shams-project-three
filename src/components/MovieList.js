@@ -1,12 +1,12 @@
 import no_image from "../assets/no_image.png"
 
 function MovieList(props) {
+  console.log("MovieList.js has loaded");
   const altText = props.title;
   let imgSource; 
   if (props.poster) {
     imgSource = `https://image.tmdb.org/t/p/w300/${props.poster}`;
   } else {
-    console.log("No image found");
     imgSource = no_image;
   }
 

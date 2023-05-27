@@ -3,6 +3,7 @@ import { getDatabase, ref, onValue , push} from "firebase/database";
 import firebase from "../firebase";
 
 function ReviewForm(props) {
+  console.log("ReviewForm.js has loaded");
   const [reviewerName, setReviewerName] = useState("");
   const [review, setReview] = useState("");
   const [rating, setRating] = useState("");
@@ -13,29 +14,24 @@ function ReviewForm(props) {
 
     onValue(dbRef, (response) => {
       // here we use Firebase's .val() method to parse our database info the way we want it
-      console.log(response.val());
     });
   }, []);
 
   const handleReviewerChange = (e) => {
-    console.log(e.target.value);
     setReviewerName(e.target.value);
   }
 
   const handleRatingChange = (e) => {
-    console.log(e.target.value);
     setRating(e.target.value);
   }
 
   const handleReviewChange = (e) => {
-    console.log(e.target.value);
     setReview(e.target.value);
   }
 
   const handleReviewSubmit = (e) => {
     e.preventDefault(); 
     const currentDate = new Date();
-    console.log(currentDate);
     const monthNumber = currentDate.getMonth();
     let month
     // eslint-disable-next-line default-case
@@ -79,7 +75,6 @@ function ReviewForm(props) {
     }
     const day = currentDate.getDate();
     const year = currentDate.getFullYear();
-    console.log(`Review submitted on ${currentDate} or ${month} ${day}, ${year}` );
     const database = getDatabase(firebase);
     const dbRef = ref(database);
     
@@ -92,7 +87,6 @@ function ReviewForm(props) {
       displayDate: `${month} ${day}, ${year}`
     }
 
-    console.log(reviewObject);
 
     // push the value of the `userInput` state to the database
     push(dbRef, reviewObject);

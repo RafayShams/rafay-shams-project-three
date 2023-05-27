@@ -1,5 +1,5 @@
 function Reviews(props) {
-  console.log("I am the Reviews component");
+  console.log("Reviews.js has loaded");
   return (
     <div>
       <h4>{props.title}</h4>
