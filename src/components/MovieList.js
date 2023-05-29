@@ -1,7 +1,6 @@
 import no_image from "../assets/no_image.png"
 
 function MovieList(props) {
-  console.log("MovieList.js has loaded");
   const altText = props.title;
   let imgSource; 
   if (props.poster) {
@@ -13,24 +12,28 @@ function MovieList(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  
   return (
-    <div>
+    <div className="movieList">
       <img src={imgSource} alt={altText} />
-      <h3>{props.title}</h3>
-      <p>{props.synopsis}</p>
-      <p>{props.releaseDate}</p>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <button
-          type="submit"
-          onClick={(e) => props.getReviewForm(e, props.title)}
-        >Review this movie
-        </button>
-        <button 
-          type="submit"
-          onClick={(e) => props.getReviews(e, props.title)}
-        >See other reviews
-        </button>
-      </form>
+      <div className="movieInfo">
+        <h3>{props.title}</h3>
+        <p>{props.synopsis}</p>
+        <p>{props.releaseDate}</p>
+      </div>
+    <form onSubmit={(e) => handleSubmit(e)}>
+      <button
+        type="submit"
+        onClick={(e) => props.getReviewForm(e, props.title)}
+      >Review movie
+      </button>
+      <button 
+        type="submit"
+        onClick={(e) => props.getReviews(e, props.title)}
+      >Other reviews
+      </button>
+    </form>
     </div>
   );
 }

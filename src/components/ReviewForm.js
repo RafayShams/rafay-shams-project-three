@@ -3,7 +3,6 @@ import { getDatabase, ref, onValue , push} from "firebase/database";
 import firebase from "../firebase";
 
 function ReviewForm(props) {
-  console.log("ReviewForm.js has loaded");
   const [reviewerName, setReviewerName] = useState("");
   const [review, setReview] = useState("");
   const [rating, setRating] = useState("");

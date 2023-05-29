@@ -13,7 +13,6 @@ import "./App.css";
 
 
 export default function App() {
-  console.log("App.js has loaded");
   const [movieName, setMovieName] = useState("");
   const [movieList, setMovieList] = useState([]);
   const [movieToReview, setMovieToReview] = useState("");
@@ -64,6 +63,7 @@ export default function App() {
   };
 
   useEffect(() => {
+    console.log("useEffect is running");
     axios({
       url: "https://api.themoviedb.org/3/search/movie",
       method: "GET",

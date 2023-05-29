@@ -1,8 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 
 function MovieSearch(props) {
-  console.log("MovieSearch.js has loaded");
   const [movieInput, setMovieInput] = useState("");
 
   const handleMovieChange = (event) => {
@@ -30,7 +28,7 @@ function MovieSearch(props) {
   };
   
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="movieSearchForm">
       <label>Please enter a movie name to search movies to review</label>
       <input
         type="text"
