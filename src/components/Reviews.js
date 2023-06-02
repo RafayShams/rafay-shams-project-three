@@ -1,13 +1,15 @@
 function Reviews(props) {
   return (
-    <div>
-      <h4>{props.title}</h4>
-      <p>{props.reviewer}</p>
-      <p>{props.displayDate}</p>
-      <p>{props.rating}</p>
+    <div className="review">
+      <h3>Movie: {props.title}</h3>
+      <div className="reviewerDate">
+        <p>Reviewer: {props.reviewer}</p>
+        <p>Review Date: {props.date}</p>
+      </div>
+      <p>Rating: {props.rating}</p>
       <p>{props.reviewGiven}</p>
     </div>
-  )
+  );
 }
 
-export default Reviews
+export default Reviews;
