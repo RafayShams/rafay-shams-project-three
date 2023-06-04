@@ -4,8 +4,8 @@ function Thanks() {
   const { movieName } = useParams();
 
   return (
-    <div>
-      <h2>Thanks for reviewing {movieName}</h2>
+    <div className="thanks">
+      <h3>Thanks for reviewing {movieName}</h3>
       <p>See all reviews for {movieName}</p>
       <Link to={`/reviews/${movieName}`}>
         <button type="submit">See all reviews</button>

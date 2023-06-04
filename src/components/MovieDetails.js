@@ -17,16 +17,19 @@ function MovieDetails(props) {
 
   return (
     <div className="movieList">
-      <div className="posterContainer">
-        <img src={imgSource} alt={altText} />
+      <div className="posterAndInfo">
+        <div className="posterContainer">
+          <img src={imgSource} alt={altText} />
+        </div>
+
+        <div className="movieInfo">
+          <h3>{props.title}</h3>
+          <p>{props.synopsis}</p>
+          <p>{props.releaseDate}</p>
+        </div>
       </div>
 
-      <div className="movieInfo">
-        <h3>{props.title}</h3>
-        <p>{props.synopsis}</p>
-        <p>{props.releaseDate}</p>
-      </div>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={(e) => handleSubmit(e)} className="reviewButtons">
         <Link to={`/reviewForm/${props.title}`}>
           <button type="submit">Review movie</button>
         </Link>

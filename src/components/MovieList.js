@@ -24,7 +24,12 @@ function MovieList() {
 
   return (
     <div>
-      <ul className="gallery">
+      {movieList.length === 0
+      ? (
+        <h3>No movie found</h3>
+      )
+      : (
+        <ul className="gallery">
         {movieList.map((movie) => {
           return (
             <li>
@@ -39,6 +44,7 @@ function MovieList() {
           );
         })}
       </ul>
+      )}
     </div>
   );
 }

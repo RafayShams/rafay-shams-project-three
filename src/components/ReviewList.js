@@ -34,22 +34,27 @@ function ReviewList() {
   }, [movieName]);
 
   return (
-    <div className="review">
-      {reviewList.lenght === 0 ? (
-        <h2>There are no reviews yet for {movieName}</h2>
-      ) : (
+    <div className="reviewSection">
+      {reviewList.length === 0 
+      ? (
+          <h3>There are no reviews yet for {movieName}</h3>
+        ) 
+      : 
+      (
         <>
-          <h2>Reviews for {movieName}</h2>
-          <ul>
+          <h3>Reviews for {movieName}</h3>
+          <ul className="review">
             {reviewList.map((review) => {
               return (
-                <Review
+                <li>
+                  <Review
                   title={review.movieName}
                   reviewer={review.reviewer}
                   rating={review.rating}
                   reviewGiven={review.review}
                   date={review.displayDate}
                 />
+                </li>
               );
             })}
           </ul>
