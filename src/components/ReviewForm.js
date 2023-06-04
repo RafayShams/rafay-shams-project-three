@@ -3,11 +3,14 @@ import { getDatabase, ref, push } from "firebase/database";
 import firebase from "../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useParams, useNavigate } from "react-router-dom";
 
-function ReviewForm(props) {
+function ReviewForm() {
   const [reviewerName, setReviewerName] = useState("");
   const [review, setReview] = useState("");
   const [rating, setRating] = useState("");
+  const { movieName } = useParams();
+  const navigate = useNavigate();
 
   const handleReviewerChange = (e) => {
     setReviewerName(e.target.value);
@@ -112,7 +115,7 @@ function ReviewForm(props) {
     const dbRef = ref(database);
 
     let reviewObject = {
-      movieName: props.movie,
+      movieName: movieName,
       reviewer: reviewerName,
       rating: rating,
       review: review,
@@ -129,11 +132,12 @@ function ReviewForm(props) {
     setRating("");
     setReview("");
 
-    props.clear();
+    navigate(`/Thanks/${movieName}`);
+    // props.clear();
   };
   return (
     <form className="reviewForm" onSubmit={handleReviewSubmit}>
-      <h3>You are reviewing {props.movie}</h3>
+      <h3>You are reviewing {movieName}</h3>
       <label>Reviewer Name</label>
       <input
         type="text"

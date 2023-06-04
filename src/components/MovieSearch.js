@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function MovieSearch(props) {
+function MovieSearch() {
   const [movieInput, setMovieInput] = useState("");
 
   const handleMovieChange = (event) => {
@@ -9,24 +10,9 @@ function MovieSearch(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.getMovies(e, movieInput);
-    //  axios({
-    //   url: "https://api.themoviedb.org/3/search/movie",
-    //   method: "GET",
-    //   dataResponse: "json",
-    //   params: {
-    //     api_key: "c7d2bc1af674054e4cbfe886c8424b11",
-    //     query: movieInput,
-    //     include_adult: "false"
-    //   }
-    // }).then((res) => {
-    //   
-    //   props.setMovieList(res.data.results);
-    // });
     setMovieInput("");
-    props.clear();
   };
-  
+
   return (
     <form onSubmit={handleSubmit} className="movieSearchForm">
       <label>Please enter a movie name to search movies to review</label>
@@ -36,7 +22,9 @@ function MovieSearch(props) {
         onChange={handleMovieChange}
         value={movieInput}
       />
-      <button type="submit">Search Movie</button>
+      <Link to={`/movieSearch/${movieInput}`} className="movieSearchButton">
+        <button type="submit">Search Movie</button>
+      </Link>
     </form>
   );
 }

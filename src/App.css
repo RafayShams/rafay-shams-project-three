@@ -1,6 +1,7 @@
 html {
   font-size: 125%;
 }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -22,12 +23,29 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid red;
 }
 
 h1 {
   font-size: 5rem;
   margin: 0;
   margin-top: -100px;
+  color: #FCA311;
+}
+
+h2 {
+  color: #FCA311;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 85%;
+  border: 1px solid red;
+}
+
+img {
+  width: 100%;
 }
 
 .movieSearchForm {
@@ -36,44 +54,58 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 100px 0;  
 }
 
 .movieSearchForm label {
-  width: 50%;
   margin: 0 auto;
-  text-align: left;
-  margin: 10px;
-  margin-left: -1px;
+  margin: 10px 0;
 }
 
 input {
   width: 50%;
-  margin: 0 auto;
   border: none;
-  margin: 10px;
-  padding: 5px;
+  margin: 10px 0;
+  padding: 15px;
+}
+
+.movieSearchButton {
+  width: 50%;
 }
 
 button {
-  width: 51%;
-  margin: 0 auto;
-  margin: 10px;
-  padding: 5px;
+  width: 100%;
+  margin: 10px 0;
+  padding: 15px;
   color: #FFFFFF;
   background-color: #ad0101;
   border: none;
 }
 
+.gallery {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+li {
+  list-style-type: none;
+  margin: 20px;
+  padding: 0;
+  width: calc(50% - 40px)
+}
+
 .movieList {
   position: relative;
-  width: 300px;
-  margin: 0 auto;
+  /* width: 300px;
+  margin: 0 auto; */
 }
 
 .movieInfo {
   display: flex;
   flex-direction: column;
-  width: 300px;
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -84,6 +116,7 @@ button {
 .movieList button {
   width: calc(50% - 20px);
 }
+
 
 .posterContainer:hover+.movieInfo {
   visibility: visible;
@@ -96,7 +129,7 @@ button {
 }
 
 .yellowStar {
-  color: yellow;
+  color: #FCA311;
 }
 
 .reviewForm {
@@ -126,7 +159,7 @@ button {
   width: 50%;
   margin: 0 auto;
   align-items: flex-start;
-  border: 2px solid yellow;
+  border: 2px solid #FCA311;
 }
 
 .reviewerDate {

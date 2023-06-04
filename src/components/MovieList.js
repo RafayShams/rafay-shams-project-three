@@ -1,40 +1,44 @@
-import no_image from "../assets/no_image.png";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import MovieDetails from "./MovieDetails";
 
-function MovieList(props) {
-  const altText = props.title;
-  let imgSource;
-  if (props.poster) {
-    imgSource = `https://image.tmdb.org/t/p/w300/${props.poster}`;
-  } else {
-    imgSource = no_image;
-  }
+function MovieList() {
+  const { movieName } = useParams();
+  const [movieList, setMovieList] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  useEffect(() => {
+    axios({
+      url: "https://api.themoviedb.org/3/search/movie",
+      method: "GET",
+      dataResponse: "json",
+      params: {
+        api_key: "c7d2bc1af674054e4cbfe886c8424b11",
+        query: movieName,
+        include_adult: "false",
+      },
+    }).then((res) => {
+      setMovieList(res.data.results);
+    });
+  }, [movieName]);
 
   return (
-    <div className="movieList">
-      <div className="posterContainer">
-        <img src={imgSource} alt={altText} />
-      </div>
-
-      <div className="movieInfo">
-        <h3>{props.title}</h3>
-        <p>{props.synopsis}</p>
-        <p>{props.releaseDate}</p>
-      </div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <button
-          type="submit"
-          onClick={(e) => props.getReviewForm(e, props.title)}
-        >
-          Review movie
-        </button>
-        <button type="submit" onClick={(e) => props.getReviews(e, props.title)}>
-          Other reviews
-        </button>
-      </form>
+    <div>
+      <ul className="gallery">
+        {movieList.map((movie) => {
+          return (
+            <li>
+               <MovieDetails
+                key={movie.id}
+                title={movie.title}
+                poster={movie.poster_path}
+                synopsis={movie.overview}
+                releaseDate={movie.release_date}
+              />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
