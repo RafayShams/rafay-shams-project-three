@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import MovieDetails from "./MovieDetails";
 
+//Users will see this component when they click on "Search movie" button in
+//MovieSearch component
 function MovieList() {
   const { movieName } = useParams();
   const [movieList, setMovieList] = useState([]);
 
+  // api call is made to get a list of movies matching the users search query
   useEffect(() => {
     axios({
       url: "https://api.themoviedb.org/3/search/movie",
@@ -24,6 +27,10 @@ function MovieList() {
 
   return (
     <div>
+      {/* This ternary operator checks if there are any matching movies
+      to the users query.  If no movie matches then "No movie found" is 
+      returned. Otherwise movieLists is mapped through and MovieDetails component
+      is returned. */}
       {movieList.length === 0
       ? (
         <h3>No movie found</h3>

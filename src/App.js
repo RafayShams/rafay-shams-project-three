@@ -7,12 +7,15 @@ import Header from "./components/Header";
 import Thanks from "./components/Thanks";
 import { Routes, Route } from "react-router-dom";
 
+//importing stylesheet
 import "./App.css";
 
 //creating and exporting the App component
 export default function App() {
   return (
-    <div>
+    <>
+      {/* Header and movieSearch component will stay on every page while the other
+      components will show up on Routing */}
       <Header />
       <div className="wrapper">
         <MovieSearch />
@@ -23,6 +26,6 @@ export default function App() {
           <Route path="/Thanks/:movieName" element={<Thanks />} />
         </Routes>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 function Header() {
   return (
     <header>
+      {/* The two divs will act as search lights during animation */}
       <div className="leftLight"></div>
       <div className="rightLight"></div>
         <h1>Movie Reviewer</h1>

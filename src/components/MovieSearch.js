@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function MovieSearch() {
   const [movieInput, setMovieInput] = useState("");
 
+  // movieInput state variable holds the movie users search for
   const handleMovieChange = (event) => {
     setMovieInput(event.target.value);
   };
@@ -22,6 +23,7 @@ function MovieSearch() {
         onChange={handleMovieChange}
         value={movieInput}
       />
+      {/* This links to the MovieList component */}
       <Link to={`/movieSearch/${movieInput}`} className="movieSearchButton">
         <button type="submit">Search Movie</button>
       </Link>

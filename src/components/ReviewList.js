@@ -6,12 +6,16 @@ import Review from "./Review";
 //importing Hooks
 import { useEffect, useState } from "react";
 
+//This component will return all reviews for a particular movie
 function ReviewList() {
   const { movieName } = useParams();
   const [reviewList, setReviewList] = useState([]);
-
+  
   useEffect(() => {
+    //allReviews will hold all reviews from firebase
     let allReviews;
+    
+    //connecting to firebase
     const database = getDatabase(firebase);
     const dbRef = ref(database);
 
@@ -23,6 +27,7 @@ function ReviewList() {
       const reviewsForUserMovie = [];
       for (let item in allReviews) {
         if (allReviews[item].movieName === movieName) {
+          allReviews[item].key = item; //this is to provide a unique key prop
           reviewsForUserMovie.push(allReviews[item]);
         }
       }
@@ -33,6 +38,7 @@ function ReviewList() {
 
   return (
     <div className="reviewSection">
+      {/* This ternary operator checks if there are any reviews or not */}
       {reviewList.length === 0 
       ? (
           <h3>There are no reviews yet for {movieName}</h3>
@@ -40,11 +46,12 @@ function ReviewList() {
       : 
       (
         <>
+        {/* Return a list of reviews by calling the Review component */}
           <h3>Reviews for {movieName}</h3>
           <ul className="review">
             {reviewList.map((review) => {
               return (
-                <li>
+                <li key={review.key}>
                   <Review
                   title={review.movieName}
                   reviewer={review.reviewer}
