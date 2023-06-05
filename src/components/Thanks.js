@@ -1,5 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 
+// This component thanks the user for submitting a review and allows them to
+// see all reviews for a particular movie.  
 function Thanks() {
   const { movieName } = useParams();
 

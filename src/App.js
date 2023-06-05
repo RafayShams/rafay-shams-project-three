@@ -5,6 +5,7 @@ import MovieList from "./components/MovieList";
 import ReviewList from "./components/ReviewList";
 import Header from "./components/Header";
 import Thanks from "./components/Thanks";
+import Footer from "./components/Footer";
 import { Routes, Route } from "react-router-dom";
 
 //importing stylesheet
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/Thanks/:movieName" element={<Thanks />} />
         </Routes>
       </div>
+      <Footer />
     </>
   );
 }
