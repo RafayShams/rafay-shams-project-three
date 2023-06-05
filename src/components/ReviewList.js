@@ -26,10 +26,8 @@ function ReviewList() {
           reviewsForUserMovie.push(allReviews[item]);
         }
       }
-      console.log(reviewsForUserMovie);
       //all the other reviews for the users choice of movie will be stored in ReviewList state variable
       setReviewList(reviewsForUserMovie);
-      console.log(reviewList);
     });
   }, [movieName]);
 

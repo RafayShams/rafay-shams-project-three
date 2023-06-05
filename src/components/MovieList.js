@@ -32,13 +32,12 @@ function MovieList() {
         <ul className="gallery">
         {movieList.map((movie) => {
           return (
-            <li>
+            <li key={movie.id}>
                <MovieDetails
-                key={movie.id}
-                title={movie.title}
-                poster={movie.poster_path}
-                synopsis={movie.overview}
-                releaseDate={movie.release_date}
+                  title={movie.title}
+                  poster={movie.poster_path}
+                  synopsis={movie.overview}
+                  releaseDate={movie.release_date}
               />
             </li>
           );
