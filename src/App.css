@@ -23,17 +23,89 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.leftLight {
+  position: absolute;
+  background: linear-gradient(rgba(155, 162, 255, 0.2), rgba(155, 162, 255, 1));
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 25px;
+  animation-name: leftLight;
+  animation-duration: 5s;
+  visibility: hidden;
+}
+
+.rightLight {
+  position: absolute;
+  background: linear-gradient(rgba(155, 162, 255, 0.2), rgba(155, 162, 255, 1));
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  animation-name: rightLight;
+  animation-duration: 5s;
+  visibility: hidden;
+}
+
+@keyframes leftLight {
+  from {
+    transform : none;
+    visibility: visible;
+  }
+  to{
+    transform: skew(-80deg, 5deg);
+  }
+}
+
+@keyframes rightLight {
+  from {
+    transform: none;
+    visibility: visible;
+  }
+
+  to {
+    transform: skew(80deg, -5deg);
+  }
 }
 
 h1 {
   font-size: calc(5rem - 1vw);
   margin: 0;
-  margin-top: calc(-100px - 2vw);
+  margin-top: calc(-100px - 3vw);
   color: #FCA311;
+  position: relative;
+  animation-name: heading;
+  animation-duration: 5s;
 }
 
 h2 {
   color: #FCA311;
+  position: relative;
+  animation-name: subheading;
+  animation-duration: 5s;
+}
+
+@keyframes heading {
+  from {
+    left: -1200px;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes subheading {
+  from {
+    right: -1200px;
+  }
+
+  to {
+    right: 0;
+  }
 }
 
 h3 {
