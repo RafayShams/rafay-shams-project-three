@@ -17,7 +17,7 @@ function Review(props) {
   return (
     <>
       <div className="reviewerDate">
-        <p>Reviewer: {props.reviewer}</p>
+        <p className="reviewerName">Reviewer: {props.reviewer}</p>
         <p>Review Date: {props.date}</p>
       </div>
       <p>Rating:</p>
@@ -28,7 +28,7 @@ function Review(props) {
           return <FontAwesomeIcon className="yellowStar" icon={faStar} key={index}/>;
         })}
       </div>
-      <p>{props.reviewGiven}</p>
+      <p className="reviewText">{props.reviewGiven}</p>
     </>
   );
 }

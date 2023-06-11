@@ -16,9 +16,10 @@ function MovieSearch() {
 
   return (
     <form onSubmit={handleSubmit} className="movieSearchForm">
-      <label>Please enter a movie name to search movies to review</label>
+      <label htmlFor="searchBar">Please enter a movie name to search movies to review</label>
       <input
         type="text"
+        id="searchBar"
         placeholder="Enter movie name"
         onChange={handleMovieChange}
         value={movieInput}

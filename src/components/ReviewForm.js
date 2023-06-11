@@ -159,9 +159,10 @@ function ReviewForm() {
   return (
     <form className="reviewForm" onSubmit={handleReviewSubmit}>
       <h3>You are reviewing {movieName}</h3>
-      <label>Reviewer Name</label>
+      <label htmlFor="reviewersName">Reviewer Name</label>
       <input
         type="text"
+        id="reviewersName"
         placeholder="Enter name"
         onChange={handleReviewerChange}
         value={reviewerName}
@@ -200,9 +201,10 @@ function ReviewForm() {
           icon={faStar}
         />
       </div>
-      <label>Review</label>
+      <label htmlFor="reviewArea">Review</label>
       <textarea
         placeholder="Leave a Review"
+        id="reviewArea"
         onChange={handleReviewChange}
         value={review}
       ></textarea>

@@ -28,6 +28,11 @@ header {
   position: relative;
 }
 
+.h1Link {
+  text-decoration: none;
+  color: #FCA311;
+}
+
 .leftLight {
   position: absolute;
   background: linear-gradient(rgba(155, 162, 255, 0.2), rgba(155, 162, 255, 1));
@@ -275,6 +280,12 @@ button {
   display: flex;
   align-self: stretch;
   justify-content: space-between;
+  border-bottom: 1px solid #ad0101;
+}
+
+.reviewText {
+  border-top: 1px solid #ad0101;
+  padding-top: 10px;
 }
 
 /* Thanks component styles */
@@ -310,6 +321,11 @@ footer a {
 
   .reviewerDate {
     flex-direction: column;
+  }
+
+  .reviewerName {
+    border-bottom: 1px solid #ad0101;
+    padding-bottom: 10px;
   }
 }
 
