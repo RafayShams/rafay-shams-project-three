@@ -1,38 +1,384 @@
-.App {
+html {
+  font-size: 125%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #000000;
+  color: #FFFFFF;
+}
+
+/* Header styles */
+header {
+  background-image: url("./assets/header_img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.h1Link {
+  text-decoration: none;
+  color: #FCA311;
+}
+
+.leftLight {
+  position: absolute;
+  background: linear-gradient(rgba(155, 162, 255, 0.2), rgba(155, 162, 255, 1));
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 25px;
+  animation-name: leftLight;
+  animation-duration: 5s;
+  visibility: hidden;
+}
+
+.rightLight {
+  position: absolute;
+  background: linear-gradient(rgba(155, 162, 255, 0.2), rgba(155, 162, 255, 1));
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  animation-name: rightLight;
+  animation-duration: 5s;
+  visibility: hidden;
+}
+
+@keyframes leftLight {
+  from {
+    transform: none;
+    visibility: visible;
+  }
+
+  to {
+    transform: skew(-80deg, 5deg);
+  }
+}
+
+@keyframes rightLight {
+  from {
+    transform: none;
+    visibility: visible;
+  }
+
+  to {
+    transform: skew(80deg, -5deg);
+  }
+}
+
+h1 {
+  font-size: 5rem;
+  margin: 0;
+  margin-top: -200px;
+  color: #FCA311;
+  position: relative;
+  animation-name: heading;
+  animation-duration: 5s;
+}
+
+h2 {
+  color: #FCA311;
+  position: relative;
+  animation-name: subheading;
+  animation-duration: 5s;
+}
+
+@keyframes heading {
+  from {
+    left: -1200px;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes subheading {
+  from {
+    right: -1200px;
+  }
+
+  to {
+    right: 0;
+  }
+}
+
+/* General styles */
+h3 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 85%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img {
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button:hover,
+button:focus {
+  background-color: #9BA2FF;
+}
+
+/* MovieSearch component styles */
+.movieSearchForm {
+  background: #000000;
+  color: #FFFFFF;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 100px 0 20px 0;
 }
 
-.App-link {
-  color: #61dafb;
+.movieSearchForm label {
+  margin: 0 auto;
+  margin: 10px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+input {
+  width: 50%;
+  border: none;
+  margin: 10px 0;
+  padding: 15px;
+}
+
+.movieSearchButton {
+  width: 50%;
+}
+
+button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 15px;
+  color: #FFFFFF;
+  background-color: #ad0101;
+  border: none;
+}
+
+/* Movie List styles */
+.gallery {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.gallery li {
+  list-style-type: none;
+  margin: 20px;
+  padding: 0;
+  width: calc(50% - 40px)
+}
+
+.posterAndInfo {
+  position: relative;
+}
+
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movieList button {
+  margin: 10px;
+  width: calc(50% - 20px)
+}
+
+.posterContainer:hover+.movieInfo {
+  visibility: visible;
+}
+
+/* Review Form styles */
+.star {
+  color: opaque;
+  font-size: 24px;
+  margin: 5px;
+}
+
+.yellowStar {
+  color: #FCA311;
+}
+
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 15px;
+}
+
+.reviewForm label {
+  margin: 20px 0;
+}
+
+.reviewForm button {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.reviewForm input {
+  width: 100%;
+  margin: 0;
+  border: 1px solid #ad0101;
+}
+
+.reviewForm textarea {
+  padding: 15px;
+  height: 150px;
+  border: 1px solid #ad0101;
+}
+
+.review {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.reviewSection h3 {
+  text-align: center;
+}
+
+.review li {
+  background-color: #FFFFFF;
+  color: #000000;
+  list-style-type: none;
+  margin: 20px;
+  padding: 15px;
+  width: calc(50% - 40px)
+}
+
+.reviewerDate {
+  display: flex;
+  align-self: stretch;
+  justify-content: space-between;
+  border-bottom: 1px solid #ad0101;
+}
+
+.reviewText {
+  border-top: 1px solid #ad0101;
+  padding-top: 10px;
+}
+
+/* Thanks component styles */
+.thanks {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* Footer styles */
+
+footer {
+  margin-top: 100px;
+  border-top: 2px solid #ad0101;
+}
+footer p {
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: #FCA311;
+}
+
+/* Media Queries */
+@media (max-width: 1100px) {
+  h1 {
+    font-size: 3rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .reviewerDate {
+    flex-direction: column;
+  }
+
+  .reviewerName {
+    border-bottom: 1px solid #ad0101;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 940px) {
+  .gallery {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .gallery li {
+    width: 80%;
+  }
+}
+
+@media (max-width: 750px) {
+  .review {
+    flex-direction: column;
+  }
+
+  .review li {
+    width: 90%;
+  }
+}
+
+@media (max-width: 550px) {
+  .wrapper {
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .gallery li {
+    width: 90%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .movieSearchButton {
+    width: 100%;
+  }
+}
+
+@media (max-height: 500px) {
+  h1 {
+    margin-top: -100px;
   }
 }
